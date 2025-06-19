@@ -1,8 +1,15 @@
 import Furniture from "../models/Furniture.js"
 
 export default {
-    getAll() {
-        return Furniture.find();
+    async getAll(filter = {}) {
+        let result = await Furniture.find();
+
+        if (filter._ownerId) {
+            result = result.filter(furniture => furniture._ownerId == filter._ownerId);
+        }
+
+        return result
+
     },
     getOne(furnitureId) {
         return Furniture.findById(furnitureId);
