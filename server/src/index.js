@@ -1,5 +1,6 @@
 import express from 'express'
 import cors from 'cors'
+import routes from './routes.js';
 
 const app = express();
 
@@ -15,11 +16,8 @@ app.use(cors());
 // Parse json data sent from the client
 app.use(express.json());
 
-app.post('/users/register', (req, res) => {
-    console.log(req.body);
-
-    res.end();
-});
+// Use routes
+app.use(routes);
 
 app.get('/data/catalog', (req, res) => {
     res.json({})
