@@ -8,3 +8,8 @@ SoftUni JS Back-End Course Resfull API Workshop
  2. Start client 
    * `cd client`
    * `npm run dev`
+
+
+## Bonuses
+ - [ ] Token Invalidation
+ - [ ] Try Catch Nevernester
