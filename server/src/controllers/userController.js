@@ -3,6 +3,14 @@ import userService from "../services/userService.js";
 
 const userController = Router();
 
+userController.post('/login', async (req, res) => {
+    const { email, password } = req.body;
+
+    const result = await userService.login(email, password);
+
+    res.json(result);
+});
+
 userController.post('/register', async (req, res) => {
     const userData = req.body;
 
@@ -13,8 +21,8 @@ userController.post('/register', async (req, res) => {
 
 userController.get('/logout', (req, res) => {
     // TODO: Token invalidation
-    
-    res.json({ok: true}); 
+
+    res.json({ ok: true });
 });
 
 export default userController;
