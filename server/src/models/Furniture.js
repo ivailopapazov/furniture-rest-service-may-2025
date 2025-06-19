@@ -4,10 +4,12 @@ const furnitureSchema = new Schema({
     make: {
         type: String,
         required: true,
+        minLength: [4, 'Make should have at least 4 characters'],
     },
     model: {
         type: String,
         required: true,
+        minLength: [4, 'Model should have at least 4 characters'],
     },
     year: {
         type: Number,
