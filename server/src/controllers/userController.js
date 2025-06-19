@@ -11,4 +11,10 @@ userController.post('/register', async (req, res) => {
     res.json(result);
 });
 
+userController.get('/logout', (req, res) => {
+    // TODO: Token invalidation
+    
+    res.json({ok: true}); 
+});
+
 export default userController;
