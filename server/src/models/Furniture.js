@@ -14,18 +14,24 @@ const furnitureSchema = new Schema({
     year: {
         type: Number,
         required: true,
+        min: [1950, 'Year should be at least 1950'],
+        max: [2050, 'Year cannot be larger than 2050'],
     },
     description: {
         type: String,
         required: true,
+        minLength: [10, 'Description should be at least 10 characters'],
+
     },
     price: {
         type: Number,
         required: true,
+        min: [0, 'Negative price is not allowed!'],
     },
     img: {
         type: String,
         required: true,
+        validate: [/^https?:\/\//, 'Invalid image url']
     },
     material: {
         type: String,
