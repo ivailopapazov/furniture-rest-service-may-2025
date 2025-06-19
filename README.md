@@ -11,5 +11,5 @@ SoftUni JS Back-End Course Resfull API Workshop
 
 
 ## Bonuses
+ - [x] Try Catch Nevernester
  - [ ] Token Invalidation
- - [ ] Try Catch Nevernester

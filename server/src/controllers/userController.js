@@ -5,7 +5,7 @@ const userController = Router();
 
 userController.post('/login', async (req, res) => {
     const { email, password } = req.body;
-    
+
     const result = await userService.login(email, password);
 
     res.json(result);
@@ -19,8 +19,11 @@ userController.post('/register', async (req, res) => {
     res.json(result);
 });
 
-userController.get('/logout', (req, res) => {
+userController.get('/logout', async (req, res) => {
     // TODO: Token invalidation
+    const token = req.header('X-Authorization');
+    
+    await userService.logout(token);
 
     res.json({ ok: true });
 });

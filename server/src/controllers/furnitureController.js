@@ -1,6 +1,7 @@
 import { Router } from 'express'
 
 import furnitureService from '../services/furnitureService.js';
+import { resolve } from '../utils/promiseUtils.js';
 
 const furnitureController = Router();
 
@@ -17,13 +18,13 @@ furnitureController.post('/', async (req, res) => {
 
     const ownerId = req.user.id;
 
-    try {
-        const result = await furnitureService.create(furnitureData, ownerId);
+    const [err, result] = await resolve(furnitureService.create(furnitureData, ownerId))
 
-        res.json(result);
-    } catch (err) {
-        res.status(400).json(err);
+    if (err) {
+        return res.status(400).json(err);
     }
+
+    res.json(result);
 });
 
 furnitureController.get('/:furnitureId', async (req, res) => {

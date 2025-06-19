@@ -1,6 +1,7 @@
 import bcrypt from 'bcrypt'
 import { generateAuthToken } from "../utils/authUtils.js";
 import User from "../models/User.js";
+import InvalidToken from '../models/InvalidToken.js';
 
 export default {
     async register(userData) {
@@ -34,5 +35,8 @@ export default {
             email: user.email,
             accessToken: token
         };
+    },
+    async logout(token) {
+        return InvalidToken.create({ token });
     }
 }
