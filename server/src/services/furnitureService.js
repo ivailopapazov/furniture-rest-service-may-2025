@@ -9,5 +9,8 @@ export default {
     },
     create(furnitureData, ownerId) {
         return Furniture.create({ ...furnitureData, _ownerId: ownerId });
+    },
+    delete(furnitureId) {
+        return Furniture.findByIdAndDelete(furnitureId);
     }
 }
