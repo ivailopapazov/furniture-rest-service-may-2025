@@ -9,14 +9,16 @@ const app = express();
 //     next();
 // });
 
+// Add cors middleware
 app.use(cors());
 
-app.get('/', (req, res) => {
-    res.redirect('/temp'); 
-});
+// Parse json data sent from the client
+app.use(express.json());
 
-app.get('/temp', (req, res) => {
-    res.json({temp: true}); 
+app.post('/users/register', (req, res) => {
+    console.log(req.body);
+
+    res.end();
 });
 
 app.get('/data/catalog', (req, res) => {
